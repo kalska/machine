@@ -84,6 +84,11 @@ if(!$IsArm) {
     choco upgrade --cache="$ChocoCachePath" --yes vmware-workstation-player
     choco upgrade --cache="$ChocoCachePath" --yes tightvnc
     choco upgrade --cache="$ChocoCachePath" --yes winscp
+	choco upgrade --cache="$ChocoCachePath" --yes microsoftazurestorageexplorer
+	choco upgrade --cache="$ChocoCachePath" --yes vnc-viewer
+	choco upgrade --cache="$ChocoCachePath" --yes innosetup
+	choco upgrade --cache="$ChocoCachePath" --yes 1password
+	choco upgrade --cache="$ChocoCachePath" --yes sqlitebrowser
 }
 
 ##########################################################################
