@@ -40,7 +40,6 @@ choco upgrade --cache="$ChocoCachePath" --yes microsoft-edge
 choco upgrade --cache="$ChocoCachePath" --yes git
 choco upgrade --cache="$ChocoCachePath" --yes ghostscript.app
 choco upgrade --cache="$ChocoCachePath" --yes 7zip.install
-choco upgrade --cache="$ChocoCachePath" --yes office365business
 choco upgrade --cache="$ChocoCachePath" --yes screentogif
 choco upgrade --cache="$ChocoCachePath" --yes paint.net
 choco upgrade --cache="$ChocoCachePath" --yes chocolateygui
@@ -52,21 +51,39 @@ choco upgrade --cache="$ChocoCachePath" --yes gsudo
 
 if(!$IsArm) {
     # x86/x64 only
-    choco upgrade --cache="$ChocoCachePath" --yes steam
-    choco upgrade --cache="$ChocoCachePath" --yes uplay
-    choco upgrade --cache="$ChocoCachePath" --yes origin
     choco upgrade --cache="$ChocoCachePath" --yes spotify
     choco upgrade --cache="$ChocoCachePath" --yes starship
     choco upgrade --cache="$ChocoCachePath" --yes nugetpackageexplorer
     choco upgrade --cache="$ChocoCachePath" --yes docker-for-windows
-    choco upgrade --cache="$ChocoCachePath" --yes geforce-experience
     choco upgrade --cache="$ChocoCachePath" --yes sysinternals
-    choco upgrade --cache="$ChocoCachePath" --yes nodejs
     choco upgrade --cache="$ChocoCachePath" --yes cmake
     choco upgrade --cache="$ChocoCachePath" --yes curl
     choco upgrade --cache="$ChocoCachePath" --yes vscode
-    choco upgrade --cache="$ChocoCachePath" --yes visualstudio2019professional --package-parameters "--add Microsoft.VisualStudio.Workload.NativeDesktop --includeRecommended --norestart --passive --locale en-US"
     choco upgrade --cache="$ChocoCachePath" --yes dotpeek --pre 
+	choco upgrade --cache="$ChocoCachePath" --yes ditto
+	choco upgrade --cache="$ChocoCachePath" --yes dotnetcore
+	choco upgrade --cache="$ChocoCachePath" --yes dotnetfx
+	choco upgrade --cache="$ChocoCachePath" --yes everything
+	choco upgrade --cache="$ChocoCachePath" --yes filezilla
+	choco upgrade --cache="$ChocoCachePath" --yes foxitreader
+	choco upgrade --cache="$ChocoCachePath" --yes gimp
+	choco upgrade --cache="$ChocoCachePath" --yes git-credential-manager-for-windows
+	choco upgrade --cache="$ChocoCachePath" --yes github-desktop
+	choco upgrade --cache="$ChocoCachePath" --yes googlechrome
+	choco upgrade --cache="$ChocoCachePath" --yes inkscape
+	choco upgrade --cache="$ChocoCachePath" --yes jdk8
+	choco upgrade --cache="$ChocoCachePath" --yes logexpert
+	choco upgrade --cache="$ChocoCachePath" --yes microsoft-teams
+	choco upgrade --cache="$ChocoCachePath" --yes notepadplusplus
+	choco upgrade --cache="$ChocoCachePath" --yes pia
+	choco upgrade --cache="$ChocoCachePath" --yes putty.install
+	choco upgrade --cache="$ChocoCachePath" --yes sharex
+	choco upgrade --cache="$ChocoCachePath" --yes spacesniffer
+	choco upgrade --cache="$ChocoCachePath" --yes sql-server-management-studio
+	choco upgrade --cache="$ChocoCachePath" --yes teamviewer
+	choco upgrade --cache="$ChocoCachePath" --yes vmware-workstation-player
+	choco upgrade --cache="$ChocoCachePath" --yes tightvnc
+	choco upgrade --cache="$ChocoCachePath" --yes winscp
 }
 
 ##########################################################################
@@ -88,27 +105,11 @@ if(!$IsArm) {
 }
 
 ##########################################################################
-# Install Rust
-##########################################################################
-
-if(!$IsArm) {
-    if (!(Test-Rust)) {
-        Write-Host "Installing Rust..."
-        $Client = New-Object System.Net.WebClient;
-        $Client.DownloadFile("https://win.rustup.rs/x86_64", "$HOME/Downloads/rustup-init.exe");
-        Start-Process -FilePath "$HOME/Downloads/rustup-init.exe" -NoNewWindow -Wait -ArgumentList "-y";
-        RefreshEnv
-    } else {
-        Write-Host "Updating Rust..."
-        rustup update
-    }
-}
-
-##########################################################################
-# Install posh-git
+# Install posh-git and oh-my-posh
 ##########################################################################
 
 PowerShellGet\Install-Module posh-git -Scope CurrentUser -Force
+PowerShellGet\Install-Module oh-my-posh -Scope CurrentUser -Force
 
 ##########################################################################
 # Restore Temporary Settings

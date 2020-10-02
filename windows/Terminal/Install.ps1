@@ -94,9 +94,8 @@ if($All.IsPresent -or $WindowsTerminalProfile.IsPresent) {
 #################################################################
 
 if($All.IsPresent -or $Fonts.IsPresent) {
-    # Install RobotoMono font
-    Write-Host "Installing RobotoMono nerd font..."
-    $FontPath = Join-Path $PWD "Fonts/CaskaydiaCoveMono.ttf";
+    Write-Host "Installing nerd fonts..."
+    $FontPath = Join-Path $PWD "Fonts";
     Install-Font -FontPath $FontPath;
 }
 
