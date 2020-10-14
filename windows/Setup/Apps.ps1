@@ -91,6 +91,8 @@ if(!$IsArm) {
     choco upgrade --cache="$ChocoCachePath" --yes sqlitebrowser
     choco upgrade --cache="$ChocoCachePath" --yes azure-functions-core-tools-3
 	choco upgrade --cache="$ChocoCachePath" --yes azure-cli
+	choco upgrade --cache="$ChocoCachePath" --yes linqpad
+	choco upgrade --cache="$ChocoCachePath" --yes choco-upgrade-all-at
 }
 
 ##########################################################################
